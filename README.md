@@ -1,2 +1,2 @@
 # QuickPDF
-A simple PDF  web application
+A web application for managing and processing PDF files.
