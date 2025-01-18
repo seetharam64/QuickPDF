@@ -7,12 +7,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
    <Router>
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/view-pdf">View PDFs</Link></li>
-      </ul>
-    </nav>
+     <nav className="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/view-pdf">View PDFs</a></li>
+          <li><a href="/convert-pdf">Convert PDFs</a></li>
+          <li><a href="/compress-pdf">Compress PDFs</a></li>
+          <li><a href="/merge-pdf">Merge PDFs</a></li>
+        </ul>
+      </nav>
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/view-pdf" element={<PDFViewer />} />

@@ -3,6 +3,7 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { Viewer, Worker } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import './PDFviewer.css';
 
 const PDFViewer = () => {
   const [pdfFile, setPdfFile] = useState(null);
@@ -23,11 +24,11 @@ const PDFViewer = () => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
-    <div>
-      <h2>PDF Viewer</h2>
-      <input type="file" accept="application/pdf" onChange={handleFileChange} />
+    <div className="pdf-viewer">
+      <h2 className="pdf-viewer-title">PDF Viewer</h2>
+      <input type="file" accept="application/pdf" onChange={handleFileChange} className="pdf-viewer-input"/>
       {pdfFile && (
-        <Worker workerUrl={`https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js`}>
+        <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js`}>
           <Viewer fileUrl={pdfFile} plugins={[defaultLayoutPluginInstance]} />
         </Worker>
       )}
