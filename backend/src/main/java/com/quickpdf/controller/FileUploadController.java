@@ -39,4 +39,15 @@ public class FileUploadController {
            headers.add(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename = \""+ fileName + "\"");
            return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(fileResource);
     }
+
+    @PostMapping("/convert-to-text")
+    public ResponseEntity<String> convertToText(@RequestParam("file") MultipartFile File){
+        try{
+            String filePath = storageService.convertToText(File);
+            return ResponseEntity.ok("Text file created successfully: "+ filePath);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to convert PDF to text:"
+            + e.getMessage());
+        }
+    }
 }
